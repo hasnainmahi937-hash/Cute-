@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HASNAIN MAHI TERMINAL | TEAM AESYHA ❤️</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Share+Tech+Mono&display=swap');
+
+        :root {
+            --bg: #020205;
+            --neon: #00ff41;
+            --danger: #ff003c;
+            --card-glass: rgba(15, 17, 26, 0.9);
+        }
+
+        * {
+            margin: 0; padding: 0; box-sizing: border-box;
+            cursor: crosshair;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: #fff;
+            font-family: 'Share Tech Mono', monospace;
+            overflow-x: hidden;
+        }
+
+        #matrix {
+            position: fixed;
+            top: 0; left: 0;
+            z-index: -1;
+            opacity: 0.35;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .profile-header {
+            text-align: center;
+            padding: 30px 10px;
+            background: var(--card-glass);
+            border: 2px solid var(--neon);
+            border-radius: 20px;
+            box-shadow: 0 0 20px var(--neon), inset 0 0 15px rgba(0, 255, 65, 0.2);
+            margin-bottom: 25px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        .profile-header h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            color: var(--neon);
+            text-shadow: 0 0 10px var(--neon);
+            letter-spacing: 4px;
+        }
+
+        .sec-title {
+            color: var(--neon);
+            font-family: 'Orbitron', sans-serif;
+            margin: 25px 0 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+        }
+
+        .grid-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .pill-card {
+            background: rgba(0, 255, 65, 0.05);
+            border: 1px solid rgba(0, 255, 65, 0.3);
+            padding: 15px;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 8px;
+            transition: 0.3s ease;
+            cursor: pointer;
+        }
+
+        .pill-card:hover {
+            background: rgba(0, 255, 65, 0.15);
+            border-color: var(--neon);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 255, 65, 0.3);
+        }
+
+        .pill-card i { color: var(--neon); font-size: 1.5rem; }
+        .pill-card small { font-size: 10px; color: #888; text-transform: uppercase; letter-spacing: 1px; }
+        .pill-card b { font-size: 13px; color: #fff; }
+
+        .action-btn {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 16px;
+            background: rgba(15, 17, 26, 0.8);
+            border: 1px solid var(--neon);
+            border-radius: 12px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            margin-bottom: 12px;
+            transition: 0.4s;
+        }
+
+        .action-btn:hover {
+            background: var(--neon);
+            color: #000;
+            box-shadow: 0 0 20px var(--neon);
+            transform: scale(1.02);
+        }
+
+        .btn-danger {
+            border-color: var(--danger);
+            color: var(--danger);
+        }
+
+        .btn-danger:hover { background: var(--danger); color: #fff; }
+
+        .terminal-box {
+            background: #000;
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 15px;
+            font-size: 12px;
+            color: var(--neon);
+            height: 120px;
+            overflow: hidden;
+        }
+
+        .quote-box {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            border: 1px dashed var(--neon);
+            border-radius: 15px;
+            color: var(--neon);
+            font-style: italic;
+        }
+
+        .warning-label {
+            color: var(--danger);
+            text-align: center;
+            font-size: 11px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            animation: blink 1s infinite;
+        }
+        @keyframes blink { 50% { opacity: 0; } }
+
+    </style>
+</head>
+<body>
+
+    <canvas id="matrix"></canvas>
+
+    <div class="container">
+        
+        <div class="profile-header">
+            <p style="font-size: 10px; letter-spacing: 5px;">[ STATUS: UNTRACEABLE ]</p>
+            <h1>HACKER HASNAIN MAHI </h1>
+            <p>Team: <b style="color: var(--neon);">TEAM AESYHA ❤️</b></p>
+        </div>
+
+        <div class="warning-label">CRITICAL: SECURE LINE ESTABLISHED</div>
+
+        <div class="sec-title"><i class="fas fa-id-card"></i> Personnel Identity</div>
+        <div class="grid-layout">
+            <div class="pill-card" onclick="playBeep()">
+                <i class="fas fa-user-circle"></i>
+                <small>Real Name</small>
+                <b>HASNAIN MAHI  Jadoon</b>
+            </div>
+            <div class="pill-card" onclick="playBeep()">
+                <i class="fas fa-calendar-check"></i>
+                <small>Birth Date</small>
+                <b>27 July 2005</b>
+            </div>
+            <div class="pill-card" onclick="playBeep()">
+                <i class="fas fa-mosque"></i>
+                <small>Religion</small>
+                <b>Islam</b>
+            </div>
+            <div class="pill-card" onclick="playBeep()">
+                <i class="fas fa-heart"></i>
+                <small>Relationship</small>
+                <b>AESYHA ❤️😘</b>
+            </div>
+            <div class="pill-card" onclick="playBeep()">
+                <i class="fas fa-droplet" style="color: var(--danger);"></i>
+                <small>Blood Group</small>
+                <b>TUM N KYA KRNA H </b>
+            </div>
+            <div class="pill-card" onclick="playBeep()">
+                <i class="fas fa-user-ninja"></i>
+                <small>Type</small>
+                <b>White Hat</b>
+            </div>
+        </div>
+
+        <div class="sec-title"><i class="fas fa-skull"></i> Dark Expertise</div>
+        <div class="grid-layout">
+            <div class="pill-card" onclick="playBeep()">
+                <i class="fas fa-mobile-alt"></i>
+                <small>Expert</small>
+                <b>App Developer</b>
+            </div>
+            <div class="pill-card" onclick="playBeep()">
+                <i class="fas fa-globe"></i>
+                <small>Expert</small>
+                <b>Web Developer</b>
+            </div>
+            <div class="pill-card" onclick="playBeep()">
+                <i class="fas fa-robot"></i>
+                <small>Automation</small>
+                <b>Bot Developer</b>
+            </div>
+            <div class="pill-card" onclick="playBeep()">
+                <i class="fas fa-terminal"></i>
+                <small>Tool</small>
+                <b>Termux Pro</b>
+            </div>
+            <div class="pill-card" onclick="playBeep()" style="grid-column: span 2;">
+                <i class="fab fa-linux"></i>
+                <small>Main OS</small>
+                <b>Kali Linux Pro User</b>
+            </div>
+        </div>
+
+        <div class="sec-title"><i class="fas fa-microchip"></i> Live Logs</div>
+        <div class="terminal-box" id="term">
+            > Shell: Kali Linux Initialized...<br>
+            > Real Name: Usman Jadoon (Verified)...<br>
+            > Session: Active.
+        </div>
+
+        <div class="sec-title"><i class="fas fa-network-wired"></i> Contact Nodes</div>
+        
+        <a href="+923486732597" target="_blank" class="action-btn" onclick="playBeep()">
+            <i class="fab fa-telegram-plane"></i> Personal WAHTSAP  ID
+        </a>
+
+        <a href="https://www.facebook.com/share/18AjLL5cPw/" target="_blank" class="action-btn" onclick="playBeep()">
+            <i class="fab fa-facebook-f"></i> Facebook id
+        </a>
+
+        <a href="https://whatsapp.com/channel/0029VbCfIcJDOQIVH7f8MA1C" target="_blank" class="action-btn" onclick="playBeep()">
+            <i class="fas fa-shield-alt"></i> WAHTSAP CAHNLE 
+        </a>
+
+        <a href="https://whatsapp.com/channel/0029VbCfIcJDOQIVH7f8MA1C" target="_blank" class="action-btn btn-danger" onclick="playBeep()">
+            <i class="fas fa-robot"></i> Backup Channel
+        </a>
+
+        <div class="quote-box">
+            "Hacking is not bad, you are bad.।<br>
+            And I am a craftsman of that art.।"
+        </div>
+
+        <footer style="text-align: center; color: #444; font-size: 10px; padding: 30px 0;">
+             | © 2026 | HACKER HASNAIN MAHI 
+        </footer>
+    </div>
+
+    <audio id="beepSound">
+        <source src="https://www.soundjay.com/buttons/button-50.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        const canvas = document.getElementById('matrix');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        const chars = "HASNAIN MAHI ";
+        const fontSize = 16;
+        const columns = canvas.width / fontSize;
+        const drops = Array(Math.floor(columns)).fill(1);
+        function drawMatrix() {
+            ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = "#0F0";
+            ctx.font = fontSize + "px monospace";
+            for (let i = 0; i < drops.length; i++) {
+                const text = chars[Math.floor(Math.random() * chars.length)];
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+                drops[i]++;
+            }
+        }
+        setInterval(drawMatrix, 50);
+
+        function playBeep() {
+            const beep = document.getElementById("beepSound");
+            beep.currentTime = 0;
+            beep.play();
+        }
+
+        const term = document.getElementById('term');
+        const logs = ["> Scanning...", "> Root Access Granted.", "> IP Spoofed.", "> Encryption: AES-256."];
+        setInterval(() => {
+            term.innerHTML += "<br> " + logs[Math.floor(Math.random() * logs.length)];
+            if(term.innerHTML.split('<br>').length > 6) {
+                term.innerHTML = term.innerHTML.split('<br>').slice(1).join('<br>');
+            }
+        }, 2000);
+    </script>
+</body>
+</html
